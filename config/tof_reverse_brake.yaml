@@ -1,0 +1,29 @@
+# HM-LD1 SDK UVC device.
+uvc_device: /dev/video0
+
+# Supported values: pointcloud, mixed, depth.
+# pointcloud uses the device direct PointCloud160x120 stream.
+uvc_profile: pointcloud
+
+# Velocity output.
+cmd_vel_topic: /cmd_vel
+publish_rate_hz: 20.0
+
+# Safety behavior: do not move until a fresh point cloud has been processed.
+frame_timeout_ms: 2000
+stop_on_no_data: true
+
+# Obstacle point definition.
+stop_distance_m: 0.10
+min_distance_m: 0.03
+min_obstacle_points: 8
+clear_required_frames: 3
+
+# hm_ld1_sdk point coordinates are x-right, y-down, z-forward, in mm.
+# The sign fields let you map a mounted camera to the vehicle coordinate you want.
+distance_axis: z
+distance_sign: 1.0
+height_axis: y
+height_sign: -1.0
+height_min_m: -0.10
+height_max_m: 0.10

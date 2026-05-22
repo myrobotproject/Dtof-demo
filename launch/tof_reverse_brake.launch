@@ -1,0 +1,13 @@
+<launch>
+  <arg name="config_file" default="$(find tof_demo)/config/tof_reverse_brake.yaml"/>
+  <arg name="reverse_speed_mps" default="0.10"/>
+  <arg name="uvc_device" default="/dev/video0"/>
+  <arg name="cmd_vel_topic" default="/cmd_vel"/>
+
+  <node pkg="tof_demo" type="tof_reverse_brake_node" name="tof_reverse_brake_node" output="screen">
+    <rosparam command="load" file="$(arg config_file)"/>
+    <param name="reverse_speed_mps" value="$(arg reverse_speed_mps)"/>
+    <param name="uvc_device" value="$(arg uvc_device)"/>
+    <param name="cmd_vel_topic" value="$(arg cmd_vel_topic)"/>
+  </node>
+</launch>
